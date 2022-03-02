@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import * as React from "react";
+import {useEffect, useState} from "react";
 
 interface CardComponentProps {
     cardTitle: string;
@@ -14,27 +15,37 @@ interface CardComponentProps {
 }
 
 export const CardComponent = ({cardTitle, cardSecondaryTitle, description}: CardComponentProps): JSX.Element => {
+
+    const [marginTopVal, setMarginTopVal] = useState<string>('1%');
+
+    useEffect(() => {
+        if (cardTitle % 2 == 0) {
+            setMarginTopVal('4%')
+        }
+    })
+
+
     return <>
-        <Card sx={{maxWidth: 349, minHeight: 278, borderRadius: 2, backgroundColor: '#2D344A'}}>
+        <Card
+            sx={{marginTop: marginTopVal, width: "45%", height: 278, borderRadius: 2, backgroundColor: '#2D344A'}}>
             <CardContent>
                 <Typography sx={{
-                    marginTop: 4,
-                    marginLeft: 3,
-                    minWidth: 256,
-                    minHeight: 19,
+                    marginTop: '8%',
+                    marginLeft: '10%',
+                    minWidth: '40%',
+                    minHeight: '10%',
                     textAlign: "left",
-                    fontSize: 14,
+                    fontSize: '90%',
                     textTransform: 'uppercase'
                 }} color="#64FFDA" gutterBottom>
                     {cardTitle}
                 </Typography>
                 <Typography sx={{
-                    marginTop: 2,
-                    marginLeft: 3,
-                    minWidth: 159,
-                    minHeight: 28,
+                    marginTop: '8%',
+                    marginLeft: '8%',
+                    minWidth: '40%',
+                    minHeight: '20%',
                     textAlign: "left",
-                    font: "normal normal medium 20px/30px Poppins",
                     textTransform: 'uppercase'
                 }} color="#FFFFFF" variant="h5" component="div">
                     sdhfdgj
